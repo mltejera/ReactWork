@@ -68,7 +68,8 @@ class BooksApp extends React.Component {
                         </div>
                       </li>
                       <li>
-                        <Book />
+                        <Book title="Enders Game"
+                              Author="Orson Scott Card"/>
                       </li>
                     </ol>
                   </div>

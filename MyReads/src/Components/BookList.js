@@ -14,7 +14,7 @@ return <div className="bookshelf">
                                      <div   className="book-cover" 
                                             style={{ width: 128, 
                                                      height: 188, 
-                                                     backgroundImage: 'url($book.backgroundPictureURL)'}}></div>
+                                                     backgroundImage: `url($book.backgroundPictureURL)`}}></div>
                                      <div className="book-shelf-changer">
                                          <select>
                                              <option value="none" disabled>Move to...</option>
@@ -29,7 +29,6 @@ return <div className="bookshelf">
                                 <div className="book-authors">{book.author}</div>
                             </div>
                         </li>
-
                         ))
                     }
                 </ol>

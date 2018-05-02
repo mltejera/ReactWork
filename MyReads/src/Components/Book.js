@@ -10,9 +10,6 @@ class Book extends React.Component {
     }
 
     handleChange = (event) => {
-
-        event.preventDefault();
-
         if (this.props.onMoveBook) {
             this.props.onMoveBook(this.props.book, event.target.value);
         }

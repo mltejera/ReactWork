@@ -11,7 +11,7 @@ class BookList extends React.Component {
     }    
 
     filterList(books, filterKey){
-        return books.filter(book => book.shelf.toUpperCase() === filterKey.toUpperCase())
+        return books.filter(book => book.shelf.toUpperCase() === filterKey.toUpperCase());
     };
 
     render() {

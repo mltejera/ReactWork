@@ -4,20 +4,12 @@ import './App.css'
 import BookList from './Components/BookList'
 import BookSearch from './Components/BookSearch'
 import * as BooksAPI from './BooksAPI'
+import { Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
-    bookList: [],
-
-
-
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    showSearchPage: false
+    bookList: []
   }
 
   componentDidMount(){
@@ -43,40 +35,39 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-          <BookSearch />
-        ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                <div className="bookshelf">              
-                    <BookList listTitle='Currently Reading' 
-                              books={this.state.bookList}
-                              filterKey='currentlyReading'
-                              onMoveBook={this.moveBook} />
-                </div>
-                <div className="bookshelf">
-                  <BookList listTitle='Want to read'
+      <Route path='/search' component={BookSearch}/>
+      <Route exact path='/' render={() => (
+        <div className="list-books">
+          <div className="list-books-title">
+            <h1>MyReads</h1>
+          </div>
+          <div className="list-books-content">
+            <div>
+              <div className="bookshelf">              
+                  <BookList listTitle='Currently Reading' 
                             books={this.state.bookList}
-                            filterKey='wantToRead'
-                            onMoveBook={this.moveBook}/>
-                </div>
-                <div className="bookshelf">
-                  <BookList listTitle='Read'
-                            filterKey='read'
-                            books={this.state.bookList}
+                            filterKey='currentlyReading'
                             onMoveBook={this.moveBook} />
-                </div>
+              </div>
+              <div className="bookshelf">
+                <BookList listTitle='Want to read'
+                          books={this.state.bookList}
+                          filterKey='wantToRead'
+                          onMoveBook={this.moveBook}/>
+              </div>
+              <div className="bookshelf">
+                <BookList listTitle='Read'
+                          filterKey='read'
+                          books={this.state.bookList}
+                          onMoveBook={this.moveBook} />
               </div>
             </div>
-            <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-            </div>
           </div>
-        )}
+          <div className="open-search">
+            <Link to='/search'/>
+          </div>
+        </div>
+      )}/>
       </div>
     )
   }

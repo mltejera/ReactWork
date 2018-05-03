@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
-
-
 class Book extends React.Component {
     static propTypes = {
         onMoveBook: PropTypes.func.isRequired,
@@ -13,19 +11,20 @@ class Book extends React.Component {
         if (this.props.onMoveBook) {
             this.props.onMoveBook(this.props.book, event.target.value);
         }
-
     };
 
     render() {
         return <li key={this.props.book.id}>
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover"
-                        style={{
-                            width: 128,
-                            height: 188,
-                            backgroundImage: `url(${this.props.book.imageLinks.smallThumbnail})`
-                        }}></div>
+                    {this.props.book.hasOwnProperty('imageLinks') &&
+                        <div className="book-cover"
+                            style={{
+                                width: 128,
+                                height: 188,
+                                backgroundImage: `url(${this.props.book.imageLinks.smallThumbnail})`
+                            }}></div>
+                    }
                     <div className="book-shelf-changer">
                         <select onChange={this.handleChange} value={this.props.book.shelf}>
                             <option value="none" disabled>Move to...</option>

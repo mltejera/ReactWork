@@ -6,23 +6,18 @@ class BookList extends React.Component {
     static propTypes = {
         listTitle: PropTypes.string.isRequired,
         onMoveBook: PropTypes.func.isRequired,
-        books: PropTypes.array.isRequired,
-        filterKey: PropTypes.string.isRequired
-    }    
-
-    filterList(books, filterKey){
-        return books.filter(book => book.shelf.toUpperCase() === filterKey.toUpperCase());
-    };
+        books: PropTypes.array.isRequired
+    }
 
     render() {
-        const bookList = this.filterList(this.props.books, this.props.filterKey);
-
         return  <div className="bookshelf">
             <h2 className="bookshelf-title">{this.props.listTitle}</h2>
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    {bookList.map((bookInstance) => (
+                    {this.props.books.length > 0 &&
+                        this.props.books.map((bookInstance) => (
                         <Book book={bookInstance}
+                              key={bookInstance.id}
                               onMoveBook={this.props.onMoveBook}/>
                         ))
                     }

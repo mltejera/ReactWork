@@ -18,6 +18,7 @@ class BooksApp extends React.Component {
           bookList
         }))
       })
+
   };
 
   moveBook = (book, destinationShelf) => {
@@ -36,10 +37,11 @@ class BooksApp extends React.Component {
           }
 
           this.setState({bookList: result})
+
+          this.componentDidMount();
       }
     )
   };
-
 
   render() {
 

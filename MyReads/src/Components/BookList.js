@@ -24,10 +24,7 @@ class BookList extends React.Component {
                 </ol>
             </div>
         </div>
-    
     }
 }
-
-
 
 export default BookList

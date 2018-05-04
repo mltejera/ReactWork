@@ -8,39 +8,53 @@ class BookSearch extends Component {
 
     static propTypes = {
         onMoveBook: PropTypes.func.isRequired
-      }
-    
+    }
+
     state = {
         returnedBooks: []
     }
-    
+
     handleSearch = (searchTerm) => {
-        if(searchTerm.length > 0){
+        if (searchTerm.length > 0) {
             BooksAPI.search(searchTerm).then((booksBack) => {
-                this.setState(() => ({ returnedBooks: booksBack}))
+                BooksAPI.getAll().then((myCurrentBooks) => {
+                    for (var i = 0; i < booksBack.length; i++) {
+                        booksBack[i].shelf = "none";
+
+                        for (var j = 0; j < myCurrentBooks.length; j++) {
+                            if (booksBack[i].id === myCurrentBooks[j].id) {
+                                booksBack[i].shelf = myCurrentBooks[j].shelf;
+                            }
+                        }
+                    }
+
+                    this.setState(() => ({ returnedBooks: booksBack })
+                    )
+                })
             })
+
+            
+                    
         } else {
-            this.setState(() => ({ returnedBooks: []}))
+            this.setState(() => ({ returnedBooks: [] }))
         }
     }
 
 
-
     render() {
         return (
-
             <div className="search-books">
                 <div className="search-books-bar">
                     <Link className="close-search"
-                        to='/'/>
+                        to='/' />
                     <div className="search-books-input-wrapper">
                         <input type="text" placeholder="Search by title or author" onChange={(event) => this.handleSearch(event.target.value)} />
                     </div>
                 </div>
                 <div className="search-books-results">
                     <BookList books={this.state.returnedBooks}
-                              listTitle="Found Books"
-                              onMoveBook={this.props.onMoveBook}/>
+                        listTitle="Found Books"
+                        onMoveBook={this.props.onMoveBook} />
                 </div>
             </div>
 

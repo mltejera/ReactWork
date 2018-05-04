@@ -12,13 +12,7 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
-    BooksAPI.getAll()
-      .then((bookList) => {
-        this.setState(() => ({
-          bookList
-        }))
-      })
-
+    this.getMyShelves();
   };
 
   moveBook = (book, destinationShelf) => {
@@ -36,12 +30,21 @@ class BooksApp extends React.Component {
             }
           }
 
-          this.setState({bookList: result})
+          this.setState({bookList: result});
 
-          this.componentDidMount();
+          this.getMyShelves();          
       }
     )
   };
+
+  getMyShelves(){
+    BooksAPI.getAll()
+      .then((bookList) => {
+        this.setState(() => ({
+          bookList
+        }))
+      })
+  }
 
   render() {
 

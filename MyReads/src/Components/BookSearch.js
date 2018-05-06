@@ -19,8 +19,9 @@ class BookSearch extends Component {
             BooksAPI.search(searchTerm).then((booksBack) => {
                 BooksAPI.getAll().then((myCurrentBooks) => {
                     for (var i = 0; i < booksBack.length; i++) {
-                        booksBack[i].shelf = "none";
+                        booksBack[i].shelf = "none"; // default every book to none
 
+                        // assign any book on our shelves the correct shelf
                         for (var j = 0; j < myCurrentBooks.length; j++) {
                             if (booksBack[i].id === myCurrentBooks[j].id) {
                                 booksBack[i].shelf = myCurrentBooks[j].shelf;
@@ -28,18 +29,15 @@ class BookSearch extends Component {
                         }
                     }
 
-                    this.setState(() => ({ returnedBooks: booksBack })
-                    )
+                    console.log(booksBack);
+                    this.setState(() => ({ returnedBooks: booksBack }))
                 })
             })
-
-            
-                    
+     
         } else {
             this.setState(() => ({ returnedBooks: [] }))
         }
     }
-
 
     render() {
         return (

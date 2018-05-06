@@ -29,7 +29,6 @@ class BookSearch extends Component {
                         }
                     }
 
-                    console.log(booksBack);
                     this.setState(() => ({ returnedBooks: booksBack }))
                 })
             })

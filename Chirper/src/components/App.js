@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div>
-      <LoadingBar />
+        <LoadingBar />
 
         {this.props.loading === true
           ? null

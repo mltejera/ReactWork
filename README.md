@@ -8,3 +8,6 @@ Here we hammered home the fundementals of React. In this app, the user can manag
 
 <b>Goals and Todos</b>
 A basic app used to learn how Redux can manage state. I explored how actions and reducers interact with the store by creating a basic single page app to manage goals and todo items.
+
+<b>Chirper</b>
+A basic twitter clone for more practice managing state with Redux, navigating with the router and breaking up UI into components. Used a mock data service for data management.

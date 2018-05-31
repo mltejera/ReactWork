@@ -15,8 +15,10 @@ export default function questions (state = {}, action){
 
                 let newState = state;
 
-                newState[action.qid][action.answer].votes = newState[action.qid][action.answer].votes.concat(action.authedUser)
-                                       
+                if(!isInArray(newState[action.qid][action.answer].votes, action.authedUser)){
+                    newState[action.qid][action.answer].votes = newState[action.qid][action.answer].votes.concat(action.authedUser)
+                }
+                 
                 return newState
 
         default :
@@ -40,4 +42,14 @@ Array.prototype.removeElement = function(element) {
     if(index > -1){
         this.splice(index, 1)
     }
+}
+
+function isInArray(array, value){
+    for(var i = 0; i < array.length; i++){
+        if(value === array[i]){
+            return true;
+        }
+    }
+
+    return false
 }

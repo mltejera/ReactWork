@@ -11,7 +11,8 @@ export default function questions (state = {}, action){
         case ANSWER_QUESTION :
             if(action.isOptionOne){
 
-                //console.log(state[action.questionId].optionOne.votes.pushIfNotExist(action.authedUser))
+                /// this checks out okay, why doesn't the rest?
+                console.log(state[action.questionId].optionOne.votes.pushIfNotExist(action.authedUser))
 
                 return {
                     ...state,
@@ -27,16 +28,17 @@ export default function questions (state = {}, action){
                             }
                     }
                 }
-            } else {
-                return {
-                    ...state,
-                    [action.questionId] : {
-                        ...state[action.questionId],
-                        optionOne: state[action.questionID].optionOne.votes.removeElement(authedUser),
-                        optionTwo: state[action.questionID].optionTwo.votes.pushIfNotExist(authedUser)
-                    }
-                }
             }
+            // } else {
+            //     return {
+            //         ...state,
+            //         [action.questionId] : {
+            //             ...state[action.questionId],
+            //             optionOne: state[action.questionID].optionOne.votes.removeElement(authedUser),
+            //             optionTwo: state[action.questionID].optionTwo.votes.pushIfNotExist(authedUser)
+            //         }
+            //     }
+            // }
 
         default :
             return state

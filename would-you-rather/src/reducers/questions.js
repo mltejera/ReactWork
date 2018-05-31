@@ -9,36 +9,15 @@ export default function questions (state = {}, action){
                 ...action.questions
             }
         case ANSWER_QUESTION :
-            if(action.isOptionOne){
 
                 /// this checks out okay, why doesn't the rest?
-                console.log(state[action.questionId].optionOne.votes.pushIfNotExist(action.authedUser))
+                //console.log(state[action.questionId].optionOne.votes.concat(action.authedUser))
 
-                return {
-                    ...state,
-                    [action.questionId] : {
-                        ...state[action.questionId],
-                            optionOne: {
-                                votes: state[action.questionID].optionOne.votes.pushIfNotExist(authedUser),
-                                text: state[action.questionID].optionOne.text
-                            }, 
-                            optionTwo: {
-                                votes: state[action.questionID].optionTwo.votes.removeElement(authedUser),
-                                text: state[action.questionID].optionOne.text
-                            }
-                    }
-                }
-            }
-            // } else {
-            //     return {
-            //         ...state,
-            //         [action.questionId] : {
-            //             ...state[action.questionId],
-            //             optionOne: state[action.questionID].optionOne.votes.removeElement(authedUser),
-            //             optionTwo: state[action.questionID].optionTwo.votes.pushIfNotExist(authedUser)
-            //         }
-            //     }
-            // }
+                let newState = state;
+
+                newState[action.qid][action.answer].votes = newState[action.qid][action.answer].votes.concat(action.authedUser)
+                                       
+                return newState
 
         default :
             return state
@@ -54,7 +33,6 @@ Array.prototype.pushIfNotExist = function(element) {
     }
     this.push(element)
 
-    console.log(this)
 };
 
 Array.prototype.removeElement = function(element) {

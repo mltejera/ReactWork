@@ -10,9 +10,9 @@ class Question extends Component {
         const { dispatch, question, authedUser } = this.props
     
         dispatch(handleAnswerQuestion({
-            questionId: question.id,
             authedUser: authedUser,
-            isOptionOne: true,
+            qid: question.id,
+            answer: "optionOne",
         }))
       }
 
@@ -22,9 +22,9 @@ class Question extends Component {
         const { dispatch, question, authedUser } = this.props
     
         dispatch(handleAnswerQuestion({
-            questionId: question.id,
             authedUser: authedUser,
-            isOptionOne: false,
+            qid: question.id,
+            answer: "optionTwo",
         }))
       }
 
@@ -49,8 +49,6 @@ class Question extends Component {
                     <button onClick={this.handleOptionOneVote}>{optionOneText} {optionOneVoteCount}</button>
                     <button onClick={this.handleOptionTwoVote}>{optionTwoText} {optionOneVoteCount}</button>
                 </div>
-                
-
             </div>
         )
     }

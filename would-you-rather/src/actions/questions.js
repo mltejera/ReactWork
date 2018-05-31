@@ -1,4 +1,4 @@
-import {saveQuestion} from '../utils/api'
+import {saveQuestionAnswer} from '../utils/api'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ANSWER_QUESTION = 'ANSWER_QUESTION'
@@ -10,12 +10,12 @@ export function receiveQuestions(questions) {
     }
 }
 
-export function answerQuestion({questionId, authedUser, isOptionOne}){
+export function answerQuestion({authedUser, qid, answer}){
     return {
         type: ANSWER_QUESTION,
-        questionId,
         authedUser,
-        isOptionOne
+        qid,
+        answer
     }
 }
 
@@ -23,7 +23,7 @@ export function handleAnswerQuestion (info){
     return dispatch => {
         dispatch(answerQuestion(info))
 
-    return saveQuestion(info)
+    return saveQuestionAnswer(info)
         .catch((e) => {
             console.warn("Error in handleAnswerQuestion")
             dispatch(answerQuestion(info))

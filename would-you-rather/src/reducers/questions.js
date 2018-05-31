@@ -9,11 +9,7 @@ export default function questions (state = {}, action){
                 ...action.questions
             }
         case ANSWER_QUESTION :
-
-                /// this checks out okay, why doesn't the rest?
-                //console.log(state[action.questionId].optionOne.votes.concat(action.authedUser))
-
-                let newState = state;
+                let newState = {...state};
 
                 if(!isInArray(newState[action.qid][action.answer].votes, action.authedUser)){
                     newState[action.qid][action.answer].votes = newState[action.qid][action.answer].votes.concat(action.authedUser)
@@ -23,24 +19,6 @@ export default function questions (state = {}, action){
 
         default :
             return state
-    }
-}
-
-Array.prototype.pushIfNotExist = function(element) { 
-
-    for(var i = 0; i < this.length; i++){
-        if(this[i] === element){
-            return 
-        }
-    }
-    this.push(element)
-
-};
-
-Array.prototype.removeElement = function(element) {
-    var index = this.indexOf(element)
-    if(index > -1){
-        this.splice(index, 1)
     }
 }
 

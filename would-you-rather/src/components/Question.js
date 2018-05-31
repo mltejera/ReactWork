@@ -7,8 +7,11 @@ class Question extends Component {
     handleOptionOneVote = (e) => {
         e.preventDefault()
 
-        const { dispatch, question, authedUser } = this.props
-    
+        const { dispatch, question, authedUser, users } = this.props
+
+        console.log(users)
+
+           
         dispatch(handleAnswerQuestion({
             authedUser: authedUser,
             qid: question.id,
@@ -36,7 +39,7 @@ class Question extends Component {
         }
 
         const {
-            id, author, timestamp, optionOneText, optionTwoText, optionOneVoteCount, optionTwoVoteCount
+            author, timestamp, optionOneText, optionTwoText, optionOneVoteCount, optionTwoVoteCount
         } = question
 
         
@@ -47,7 +50,7 @@ class Question extends Component {
                 <span>{author}</span> 
                 <div>{formatDate(timestamp)}</div>
                     <button onClick={this.handleOptionOneVote}>{optionOneText} {optionOneVoteCount}</button>
-                    <button onClick={this.handleOptionTwoVote}>{optionTwoText} {optionOneVoteCount}</button>
+                    <button onClick={this.handleOptionTwoVote}>{optionTwoText} {optionTwoVoteCount}</button>
                 </div>
             </div>
         )
@@ -59,6 +62,7 @@ function mapStateToProps({authedUser, users, questions}, { id }){
     
     return { 
         authedUser,
+        users,
         question: question
             ? formatQuestion(question)
             : null

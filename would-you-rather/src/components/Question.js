@@ -7,10 +7,7 @@ class Question extends Component {
     handleOptionOneVote = (e) => {
         e.preventDefault()
 
-        const { dispatch, question, authedUser, users } = this.props
-
-        console.log(users)
-
+        const { dispatch, question, authedUser } = this.props
            
         dispatch(handleAnswerQuestion({
             authedUser: authedUser,

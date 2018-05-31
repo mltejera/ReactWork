@@ -1,5 +1,4 @@
-import { RECEIVE_QUESTIONS, ANSWER_QUESTION } from '../actions/questions'
-import authedUser from './authedUser';
+import { RECEIVE_QUESTIONS, ANSWER_QUESTION, ADD_QUESTION } from '../actions/questions'
 
 export default function questions (state = {}, action){
     switch(action.type){
@@ -17,6 +16,13 @@ export default function questions (state = {}, action){
                  
                 return newState
 
+        case ADD_QUESTION :
+                return {
+                    ...state,
+                    [action.question.id]: action.question
+                }
+
+                console.log(state)
         default :
             return state
     }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { formatQuestion, formatDate } from '../utils/helpers'
 import { handleAnswerQuestion } from '../actions/questions'
 import { handleUpdateUserAnswer} from '../actions/users'
+import { handleQuestionVote} from '../actions/shared'
 
 class Question extends Component {
     handleOptionOneVote = (e) => {
@@ -10,16 +11,10 @@ class Question extends Component {
 
         const { dispatch, question, authedUser } = this.props
            
-        dispatch(handleAnswerQuestion({
+        dispatch(handleQuestionVote({
             authedUser: authedUser,
             qid: question.id,
             answer: "optionOne",
-        }))
-
-        dispatch(handleUpdateUserAnswer({
-            authedUser: authedUser,
-            qid: question.id,
-            answer: "optionOne"
         }))
       }
 
@@ -28,16 +23,10 @@ class Question extends Component {
 
         const { dispatch, question, authedUser } = this.props
     
-        dispatch(handleAnswerQuestion({
+        dispatch(handleQuestionVote({
             authedUser: authedUser,
             qid: question.id,
             answer: "optionTwo",
-        }))
-
-        dispatch(handleUpdateUserAnswer({
-            authedUser: authedUser,
-            qid: question.id,
-            answer: "optionTwo"
         }))
       }
 

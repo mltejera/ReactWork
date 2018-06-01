@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion, formatDate } from '../utils/helpers'
 import { handleAnswerQuestion } from '../actions/questions'
+import { handleUpdateUserAnswer} from '../actions/users'
 
 class Question extends Component {
     handleOptionOneVote = (e) => {
@@ -14,6 +15,12 @@ class Question extends Component {
             qid: question.id,
             answer: "optionOne",
         }))
+
+        dispatch(handleUpdateUserAnswer({
+            authedUser: authedUser,
+            qid: question.id,
+            answer: "optionOne"
+        }))
       }
 
       handleOptionTwoVote = (e) => {
@@ -25,6 +32,12 @@ class Question extends Component {
             authedUser: authedUser,
             qid: question.id,
             answer: "optionTwo",
+        }))
+
+        dispatch(handleUpdateUserAnswer({
+            authedUser: authedUser,
+            qid: question.id,
+            answer: "optionTwo"
         }))
       }
 

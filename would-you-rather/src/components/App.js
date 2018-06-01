@@ -7,6 +7,7 @@ import Nav from './Nav'
 import NewQuestion from './NewQuestion'
 // import QuestionPage from './QuestionPage'
 import Leaderboard from './Leaderboard'
+import UserSelector from './UserSelector'
 
 class App extends Component {
   componentDidMount() {
@@ -20,9 +21,11 @@ class App extends Component {
         <Fragment>
           <div className='container'>
             <Nav />
-            {this.props.loading === true
-              ? null
-              : <div>
+            {/* {this.props.isAuthed === true
+              ? <UserSelector />
+              
+              : <div> */}
+              <div>
                   <Route path='/' exact component={Dashboard} />
                   {/* <Route path='/question/:id' component={QuestionPage} /> */}
                   <Route path='/new' component={NewQuestion} />
@@ -37,8 +40,8 @@ class App extends Component {
 
 function mapStateToProps({authedUser}){
   return {
-    loading: authedUser === null
+    isAuthed: authedUser === null
   }
 }
 
-export default connect()(App);
+export default connect(mapStateToProps)(App);

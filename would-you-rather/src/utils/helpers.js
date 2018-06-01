@@ -40,3 +40,14 @@ export function formatDate (timestamp) {
       optionTwoVoteCount: optionTwo.votes.length
     }
   }
+
+  
+  export function isInArray(array, value){
+  for(var i = 0; i < array.length; i++){
+      if(value === array[i]){
+          return true;
+      }
+  }
+
+  return false
+}

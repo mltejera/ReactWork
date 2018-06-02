@@ -16,7 +16,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.isAuthed)
     return (
       <Router>
         <Fragment>
@@ -28,8 +27,8 @@ class App extends Component {
                   <div>
                     <Route path='/' exact component={QuestionList} />
                     <Route path='/question/:id' component={QuestionPage} />
-                    <Route path='/new' component={NewQuestion} />
-                    <Route path='/leader' component={Leaderboard} />
+                    <Route path='/add' component={NewQuestion} />
+                    <Route path='/leaderboard' component={Leaderboard} />
                     <Route path='/changeUser' component={UserSelectorList} />
                   </div>
               </div>

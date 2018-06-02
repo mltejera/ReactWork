@@ -18,17 +18,13 @@ class User extends Component {
                 </div>
             )
         } else {
-            console.log("NULL USER")
-
             return (
                     <div className='tweet'>
                         <img
-                            src="../assets/placeholder.png"
+                            src="../placeholder.png"
                             alt = "Placeholder Image"
                             className='avatar'
                         />
-
-                        <h2>Please Select a user</h2>
                     </div>
                     )
                 }

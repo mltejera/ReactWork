@@ -4,9 +4,17 @@ import { connect } from 'react-redux'
 class Leader extends Component {
     render() {
 
-        const user = this.props.user
+        const { user, questions } = this.props
 
-        const score = Object.keys(user.answers).length + user.questions.length
+        var askCount = 0;
+
+        for(var index in questions){
+            if(questions[index].author === user.id){
+                askCount += 1
+            }
+        }
+
+        const answerCount = Object.keys(user.answers).length 
 
         return (
             <div className='tweet'>
@@ -23,7 +31,9 @@ class Leader extends Component {
                         <span>{user.name}</span>
                     </div>
                     <div className='tweet-icons'>
-                        <h5>Score: {score}</h5>
+                            <span>Questions Answered: {answerCount}</span>
+                            <br/>
+                            <span>Questions Asked: {askCount}</span>
                     </div>
                 </div>
             </div>
@@ -31,10 +41,12 @@ class Leader extends Component {
     }
 }
 
-function mapStateToProps({ users }, { id }) {
+function mapStateToProps({ users, questions }, { id }) {
     const user = users[id]
+
     return {
-        user: user
+        user: user,
+        questions
     }
 }
 

@@ -162,3 +162,9 @@ li {
   font-size: 20px;
   color: #C3392A;
 }
+
+.checkMark {
+  height: 20px;
+  width: 20px;
+  margin: 0px 0px 0px 10px;
+}

@@ -1,71 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatQuestion, formatDate } from '../utils/helpers'
-import { handleAnswerQuestion } from '../actions/questions'
-import { handleUpdateUserAnswer} from '../actions/users'
-import { handleQuestionVote} from '../actions/shared'
+import { isInArray } from '../utils/helpers'
+import QuestionAnswered from './QuestionAnswered'
+import QuestionUnAnswered from './QuestionUnAnswered'
 
 class Question extends Component {
-    handleOptionOneVote = (e) => {
-        e.preventDefault()
-
-        const { dispatch, question, authedUser } = this.props
-           
-        dispatch(handleQuestionVote({
-            authedUser: authedUser,
-            qid: question.id,
-            answer: "optionOne",
-        }))
-      }
-
-      handleOptionTwoVote = (e) => {
-        e.preventDefault()
-
-        const { dispatch, question, authedUser } = this.props
-    
-        dispatch(handleQuestionVote({
-            authedUser: authedUser,
-            qid: question.id,
-            answer: "optionTwo",
-        }))
-      }
-
     render() {
-        const { question } = this.props
-
-        if(question === null) {
-            return <p>This question doesn't exist yet</p>
+        const { question, hasAnswered } = this.props
+     
+        if(hasAnswered){
+            return <QuestionAnswered id={question.id}/>
+        } else {
+            return <QuestionUnAnswered id={question.id}/>
         }
-
-        const {
-            author, timestamp, optionOneText, optionTwoText, optionOneVoteCount, optionTwoVoteCount
-        } = question
-
-        
-
-        return (
-            <div className='tweet'>
-                <div className='tweet-info'>
-                <span>{author}</span> 
-                <div>{formatDate(timestamp)}</div>
-                    
-                    <button onClick={this.handleOptionOneVote}>{optionOneText} {optionOneVoteCount}</button>
-                    <button onClick={this.handleOptionTwoVote}>{optionTwoText} {optionTwoVoteCount}</button>
-                </div>
-            </div>
-        )
     }
 }
 
 function mapStateToProps({authedUser, users, questions}, { id }){
+
     const question = questions[id]
+    const questionsAnsweredByAuthedUser = Object.keys(users[authedUser.id].answers)
+    
+    const hasAnswered = isInArray(questionsAnsweredByAuthedUser, id)
     
     return { 
-        authedUser,
-        users,
-        question: question
-            ? formatQuestion(question)
-            : null
+        hasAnswered,
+        question
     }
 }
 

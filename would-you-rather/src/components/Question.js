@@ -48,6 +48,7 @@ class Question extends Component {
                 <div className='tweet-info'>
                 <span>{author}</span> 
                 <div>{formatDate(timestamp)}</div>
+                    
                     <button onClick={this.handleOptionOneVote}>{optionOneText} {optionOneVoteCount}</button>
                     <button onClick={this.handleOptionTwoVote}>{optionTwoText} {optionTwoVoteCount}</button>
                 </div>

@@ -1,33 +1,40 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
+import { Link, withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import User from './User'
 
 class UserSelector extends Component {
+
+    handleClick = (e) => {
+
+        e.preventDefault()
+
+        const { dispatch, user } = this.props
+
+        dispatch(setAuthedUser(user.id))
+
+        this.forceUpdate();
+    };
+
     render() {
-        const userIds = this.props.userIds
+
         return (
-            <div>
-                <h3 className='center'>Select a user</h3>
-                <ul className='dashboard-list'>
-                    {userIds.map((id) => (
-                        <li key={id} >
-                            <button onClick={this.handleClick}>
-                                <User id={id} />
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </div> 
+            <button className='tweet' onClick={this.handleClick}>
+                <User user={this.props.user} />
+            </button>
         )
     }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({users, authedUser}, props ) {
 
-    return {
-        userIds: Object.keys(users)
+    const user = users[props.id]
+
+       return {
+         user
     }
 }
 
-
-export default connect(mapStateToProps)(UserSelector)
+export default withRouter(connect(mapStateToProps)(UserSelector))

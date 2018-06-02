@@ -1,43 +1,41 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setAuthedUser } from '../actions/authedUser'
-import { Link, withRouter } from 'react-router-dom'
 
 class User extends Component {
-    handleClick = (e) => {
-
-        e.preventDefault()
-
-        console.log(this.props)
-        const { dispatch, authedUser } = this.props.id
-        
-        dispatch(setAuthedUser({ authedUser }))
-    };
 
     render() {
 
-        const user = this.props.user
-
-        return (
-            <button className='tweet' onClick={this.handleClick}>
+        if (this.props.user !== null) {
+            return (
+                <div className='tweet'>
                     <img
-                        src={user.avatarURL}
-                        alt={`Avatar of ${user.name}`}
+                        src={this.props.user.avatarURL}
+                        alt={`Avatar of ${this.props.user.name}`}
                         className='avatar'
                     />
-                    
-                    <h2>{user.name}</h2>
 
-            </button>
-        )
-    }
-}
+                    <h2>{this.props.user.name}</h2>
+                </div>
+            )
+        } else {
+            console.log("NULL USER")
 
-function mapStateToProps({ users }, { id }) {
-    const user = users[id]
-    return {
-        user: user
-    }
-}
+            return (
+                    <div className='tweet'>
+                        <img
+                            src="../assets/placeholder.png"
+                            alt = "Placeholder Image"
+                            className='avatar'
+                        />
 
-export default withRouter(connect(mapStateToProps)(User))
+                        <h2>Please Select a user</h2>
+                    </div>
+                    )
+                }
+        
+        
+            }
+        }
+        
+        
+export default connect()(User)

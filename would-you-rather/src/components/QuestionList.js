@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
 
-class Dashboard extends Component{
+class QuestionList extends Component{
     render() {
         return (
             <div>
@@ -28,4 +28,4 @@ function mapStateToProps ({ questions }){
     }
 }
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps)(QuestionList)

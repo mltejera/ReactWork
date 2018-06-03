@@ -26,6 +26,7 @@ class App extends Component {
                 <Nav />
                   <div>
                     <Route path='/' exact component={QuestionList} />
+                    <Route path='/answered' render={(props) => <QuestionList {...props} showAnswered={true}/>} /> 
                     <Route path='/question/:id' component={QuestionPage} />
                     <Route path='/add' component={NewQuestion} />
                     <Route path='/leaderboard' component={Leaderboard} />

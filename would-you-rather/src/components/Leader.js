@@ -31,9 +31,11 @@ class Leader extends Component {
                         <span>{user.name}</span>
                     </div>
                     <div className='tweet-icons'>
-                            <span>Questions Answered: {answerCount}</span>
+                            <p>
+                                Questions Answered: {answerCount}
                             <br/>
-                            <span>Questions Asked: {askCount}</span>
+                                Questions Asked: {askCount}
+                            </p>
                     </div>
                 </div>
             </div>

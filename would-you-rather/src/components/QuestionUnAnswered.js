@@ -33,8 +33,6 @@ class QuestionUnAnswered extends Component {
 
     render() {
         const { question, author, } = this.props
-
-        console.log(question.optionOne.text)
         
         return (
             <div className='tweet'>

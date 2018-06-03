@@ -1,44 +1,41 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
-import NewQuestion from './NewQuestion'
 
 class QuestionPage extends Component {
     render() {
-        // const { id, replies } = this.props
-        // console.log(this.props)
 
-        return (
-            <div>
-                {/* <Question id={id}/>
+        const {questions} = this.props
 
-                <NewQuestion id={id}/>  */}
+        var questionIds = Object.keys(questions)
+        var questionId = this.props.questionId.id
 
-                {/* {replies.length !== 0 && <h3 className='center'>Replies</h3>}
+        console.log(questionIds)
 
-                <ul>
-                    {replies.map((replyId) => (
-                        <li key={replyId}>
-                            <Question id={replyId}/>
-                        </li>
-                    ))}
-                </ul> */}
+        
 
-                Question Page
-            </div>
-        )
+        if(questionIds.includes(questionId)){
+            return (    
+                <div>
+                    <Question id={questionId}/>
+                </div>
+            )
+        } else {
+            console.log("404")
+            return <div>404, question not found</div>
+        }
+
+
     }
 }
 
-function mapStateToProps({ authedUser, questions, users }, props){
-    const { id } = props.match.params
+function mapStateToProps({questions}, props){
 
+    const questionId = props.match.params
     return {
-        // todo
-        // id,
-        // replies: !tweets[id]
-        // ? []
-        // : tweets[id].replies.sort((a,b) => tweets[b].timestamp - tweets[a].timestamp)
+        questionId,
+        questions
+
     }
 }
 

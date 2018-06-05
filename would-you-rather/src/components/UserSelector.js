@@ -16,6 +16,8 @@ class UserSelector extends Component {
         dispatch(setAuthedUser(user.id))
 
         this.forceUpdate();
+
+        this.props.history.push(`/`) 
     };
 
     render() {

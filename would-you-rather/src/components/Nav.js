@@ -7,19 +7,20 @@ export default function Nav () {
       <ul>
         <li>
           <NavLink to='/' exact activeClassName='active'>
-            Home
+            Un-answered Questions
+          </NavLink>
+        </li>
+      
+        <li>
+          <NavLink to='/answered' activeClassName='active'>
+            Answered Questions
           </NavLink>
         </li>
         <li>
           <NavLink to='/add' activeClassName='active'>
             New Question
           </NavLink>
-        </li>        
-        <li>
-          <NavLink to='/answered' activeClassName='active'>
-            Answered Questions
-          </NavLink>
-        </li>   
+        </li>     
         <li>
           <NavLink to='/leaderboard' activeClassName='active'>
             Leaderboard

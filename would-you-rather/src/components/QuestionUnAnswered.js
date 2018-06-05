@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { formatQuestion, formatDate } from '../utils/helpers'
 import { handleAnswerQuestion } from '../actions/questions'
@@ -17,6 +18,8 @@ class QuestionUnAnswered extends Component {
             qid: question.id,
             answer: "optionOne",
         }))
+        
+        this.navToQuestion()
       }
 
       handleOptionTwoVote = (e) => {
@@ -29,6 +32,12 @@ class QuestionUnAnswered extends Component {
             qid: question.id,
             answer: "optionTwo",
         }))
+
+        this.navToQuestion()
+      }
+
+      navToQuestion () {
+                  this.props.history.push(`/question/${this.props.question.id}`) 
       }
 
     render() {
@@ -63,4 +72,4 @@ function mapStateToProps({authedUser, users, questions}, { id }){
     }
 }
 
-export default connect(mapStateToProps)(QuestionUnAnswered)
+export default withRouter(connect(mapStateToProps)(QuestionUnAnswered))

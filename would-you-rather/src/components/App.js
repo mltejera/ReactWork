@@ -16,6 +16,8 @@ class App extends Component {
   }
 
   render() {
+console.log(this.props.authedUser)
+
     return (
       <Router>
         <Fragment>
@@ -24,16 +26,19 @@ class App extends Component {
               ?
               <div>
                 <Nav />
-                  <div>
-                    <Route path='/' exact component={QuestionList} />
-                    <Route path='/answered' render={(props) => <QuestionList {...props} showAnswered={true}/>} /> 
-                    <Route path='/question/:id' component={QuestionPage} />
-                    <Route path='/add' component={NewQuestion} />
-                    <Route path='/leaderboard' component={Leaderboard} />
-                    <Route path='/changeUser' component={UserSelectorList} />
-                  </div>
+                <User user={this.props.authedUser} />
+                <div>
+                  <Route path='/' exact component={QuestionList} />
+                  <Route path='/answered' render={(props) => <QuestionList {...props} showAnswered={true} />} />
+                  <Route path='/question/:id' component={QuestionPage} />
+                  <Route path='/add' component={NewQuestion} />
+                  <Route path='/leaderboard' component={Leaderboard} />
+                  <Route path='/changeUser' component={UserSelectorList} />
+                </div>
+                <div>
+                </div>
               </div>
-               : <UserSelectorList />
+              : <UserSelectorList />
             }
           </div>
         </Fragment>
@@ -43,9 +48,21 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
+
+ 
+
+  if(state.authedUser !== null && state.authedUser.id !== null){
+
+    console.log(state.users[state.authedUser.id])
+    return {
+      isAuthed: true,
+      authedUser: state.users[state.authedUser.id]
+    } 
+  }
+
   return {
-    isAuthed: (state.authedUser !== null && state.authedUser.id !== null),
-    authedUser: state.authedUser
+    isAuthed: false,
+    authedUser: null
   }
 }
 

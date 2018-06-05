@@ -10,10 +10,6 @@ class QuestionPage extends Component {
         var questionIds = Object.keys(questions)
         var questionId = this.props.questionId.id
 
-        console.log(questionIds)
-
-        
-
         if(questionIds.includes(questionId)){
             return (    
                 <div>
@@ -21,7 +17,6 @@ class QuestionPage extends Component {
                 </div>
             )
         } else {
-            console.log("404")
             return <div>404, question not found</div>
         }
 

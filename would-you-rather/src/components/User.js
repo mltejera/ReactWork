@@ -5,7 +5,7 @@ class User extends Component {
 
     render() {
 
-        if (this.props.user !== null) {
+        if (this.props !== null && this.props.user !== null) {
             return (
                 <div className='tweet'>
                     <img
@@ -27,9 +27,7 @@ class User extends Component {
                         />
                     </div>
                     )
-                }
-        
-        
+                }        
             }
         }
         

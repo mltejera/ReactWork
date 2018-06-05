@@ -7,8 +7,6 @@ class QuestionList extends Component{
 
         const { users, authedUser, questionIds, questions } = this.props
 
-        console.log(this.props)
-
         var listOfAllQuestionIds = Object.keys(questions) 
 
         var questionsIdsUserHasAnswered = Object.keys(users[authedUser.id].answers)

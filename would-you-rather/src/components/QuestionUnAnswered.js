@@ -14,7 +14,6 @@ import Typography from '@material-ui/core/Typography';
 class QuestionUnAnswered extends Component {
     handleOptionOneVote = (e) => {
         e.preventDefault()
-
         const { dispatch, question, authedUser, author } = this.props
            
         dispatch(handleQuestionVote({
@@ -41,7 +40,7 @@ class QuestionUnAnswered extends Component {
       }
 
       navToQuestion () {
-                  this.props.history.push(`/question/${this.props.question.id}`) 
+        this.props.history.push(`/question/${this.props.question.id}`) 
       }
 
     render() {

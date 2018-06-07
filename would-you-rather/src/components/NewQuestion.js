@@ -61,7 +61,8 @@ class NewQuestion extends Component {
     const inputProps = { maxLength: 120 }
 
     return (
-      <Paper className='questionCard centerBox'>
+      <div className="centerBox">
+        <Paper className='questionCard centerBox'>
           <Typography variant="title" className='center'>Compose new question</Typography>
 
           <TextField
@@ -91,13 +92,13 @@ class NewQuestion extends Component {
             multiline
             inputProps={inputProps} />
 
-           { optionTwoLeft <= 100 && (
-             <Typography color="error"
-               variant="body1"
-               gutter="true">
-               {optionTwoLeft}
-             </Typography>
-           )}
+          {optionTwoLeft <= 100 && (
+            <Typography color="error"
+              variant="body1"
+              gutter="true">
+              {optionTwoLeft}
+            </Typography>
+          )}
 
           <Button
             variant="contained"
@@ -107,8 +108,8 @@ class NewQuestion extends Component {
             disabled={optionOneText === '' || optionTwoText === ''}>
             Submit
           </Button>
-
-      </Paper>
+        </Paper>
+      </div>
     )
   }
 }

@@ -22,8 +22,6 @@ class App extends Component {
   }
 
   render() {
-console.log(this.props.authedUser)
-
     return (
       <Router>
         <Fragment>
@@ -31,9 +29,9 @@ console.log(this.props.authedUser)
             {this.props.isAuthed
               ?
               <div>
-                <Nav />
-                <User user={this.props.authedUser} />
-                <div>
+                <Nav user={this.props.authedUser} />
+                
+                <div className="topMargin"> 
                   <Route path='/' exact component={QuestionList} />
                   <Route path='/answered' render={(props) => <QuestionList {...props} showAnswered={true} />} />
                   <Route path='/question/:id' component={QuestionPage} />
@@ -54,8 +52,6 @@ console.log(this.props.authedUser)
 }
 
 function mapStateToProps(state) {
-
- 
 
   if(state.authedUser !== null && state.authedUser.id !== null){
 

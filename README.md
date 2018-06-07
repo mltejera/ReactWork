@@ -11,3 +11,6 @@ A basic app used to learn how Redux can manage state. I explored how actions and
 
 <b>Chirper</b>
 A basic twitter clone for more practice managing state with Redux, navigating with the router and breaking up UI into components. Used a mock data service for data management.
+
+<b>Would You Rather?</b>
+A voting system to continue practicing with Redux. User can create and answer polls, as well as compete against eachother to see who can be the most engaged. Used Material UI components to emulate Google's design language and a mock data service for data management.

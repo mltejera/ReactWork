@@ -23,9 +23,10 @@ class UserSelector extends Component {
     render() {
 
         return (
-            <button className='tweet' onClick={this.handleClick}>
-                <User user={this.props.user} />
-            </button>
+            <div onClick={this.handleClick}>
+                <User user={this.props.user} 
+                      isClickable={true}/>
+            </div>
         )
     }
 }

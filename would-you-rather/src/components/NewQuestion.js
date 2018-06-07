@@ -3,12 +3,19 @@ import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 import { Redirect } from 'react-router-dom'
 
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper'
+
+
 class NewQuestion extends Component {
   state = {
     optionOneText: '',
     optionTwoText: '',
     toHome: false,
   }
+
 
   handleOptionOneChange = (e) => {
     const optionOneText = e.target.value
@@ -33,7 +40,7 @@ class NewQuestion extends Component {
     const { dispatch } = this.props
 
 
-    dispatch(handleAddQuestion({optionOneText, optionTwoText }))
+    dispatch(handleAddQuestion({ optionOneText, optionTwoText }))
 
     this.setState(() => ({
       optionOneText: '',
@@ -45,51 +52,63 @@ class NewQuestion extends Component {
     const { optionOneText, optionTwoText, toHome } = this.state
 
     if (toHome === true) {
-        return <Redirect to='/'/>
+      return <Redirect to='/' />
     }
 
     const optionOneLeft = 120 - optionOneText.length
     const optionTwoLeft = 120 - optionTwoText.length
 
+    const inputProps = { maxLength: 120 }
+
     return (
-      <div>
-        <h3 className='center'>Compose new question</h3>
+      <Paper className='questionCard centerBox'>
+          <Typography variant="title" className='center'>Compose new question</Typography>
 
-        <form className='new-tweet' onSubmit={this.handleSubmit}>
-          <textarea
+          <TextField
             placeholder="What's your first option?"
-            value={optionOneText}
             onChange={this.handleOptionOneChange}
-            className='textarea'
-            maxLength={120}
-          />
+            className='bottomMargin'
+            value={optionOneText}
+            required={true}
+            multiline
+            margin="normal"
+            inputProps={inputProps} />
+
           {optionOneLeft <= 100 && (
-            <div className='tweet-length'>
+            <Typography color="error"
+              variant="body1"
+              gutter="true">
               {optionOneLeft}
-            </div>
-          )}
-          
-          <textarea
-            placeholder="And your second option?"
-            value={optionTwoText}
-            onChange={this.handleOptionTwoChange}
-            className='textarea'
-            maxLength={120}
-          />
-          {optionTwoLeft <= 100 && (
-            <div className='tweet-length'>
-              {optionTwoLeft}
-            </div>
+            </Typography>
           )}
 
-          <button
-            className='btn'
-            type='submit'
+          <TextField
+            placeholder="And your second?"
+            onChange={this.handleOptionTwoChange}
+            value={optionTwoText}
+            margin="normal"
+            required
+            multiline
+            inputProps={inputProps} />
+
+           { optionTwoLeft <= 100 && (
+             <Typography color="error"
+               variant="body1"
+               gutter="true">
+               {optionTwoLeft}
+             </Typography>
+           )}
+
+          <Button
+            variant="contained"
+            color="primary"
+            margin="normal"
+            onClick={this.handleSubmit}
             disabled={optionOneText === '' || optionTwoText === ''}>
-              Submit
-          </button>
-        </form>
-      </div>
+            Submit
+          </Button>
+
+      </Paper>
     )
   }
 }

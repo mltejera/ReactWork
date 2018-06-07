@@ -7,6 +7,10 @@ import { handleUpdateUserAnswer} from '../actions/users'
 import { handleQuestionVote} from '../actions/shared'
 import User from './User'
 
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography';
+
 class QuestionUnAnswered extends Component {
     handleOptionOneVote = (e) => {
         e.preventDefault()
@@ -44,18 +48,24 @@ class QuestionUnAnswered extends Component {
         const { question, author, } = this.props
         
         return (
-            <div className='tweet'>
-                <p>Would you rather?</p>
+            <Paper>
+                <div className='questionCard'>
+                    <Typography variant="title" classname="center">Would you rather?</Typography>                        
                     
-                <ul>
-                    <li>{question.optionOne.text}<button onClick={this.handleOptionOneVote}>Vote</button></li>
-                    <li>{question.optionTwo.text}<button onClick={this.handleOptionTwoVote}>Vote</button></li>
-                </ul>
+                    <Typography variant="subheading">{question.optionOne.text}</Typography>
+                        <Button variant="contained" onClick={this.handleOptionOneVote}>Vote</Button>
 
-                <span>Asked By:</span>
-                <User user={author}/>
+                    <Typography variant="subheading">{question.optionTwo.text}</Typography>
+                        <Button variant="contained" onClick={this.handleOptionTwoVote}>Vote</Button>
+                    
 
-            </div>
+                    <Typography variant="body2">
+                     Asked By:
+                    </Typography>
+                    <User user={author}/>
+
+                </div>
+            </Paper>
         )
     }
 }

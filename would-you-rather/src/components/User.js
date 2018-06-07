@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+
+
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
 
 class User extends Component {
 
@@ -7,29 +10,15 @@ class User extends Component {
 
         if (this.props !== null && this.props.user !== null) {
             return (
-                <div className='tweet'>
-                    <img
-                        src={this.props.user.avatarURL}
-                        alt={`Avatar of ${this.props.user.name}`}
-                        className='avatar'
-                    />
-
-                    <h2>{this.props.user.name}</h2>
-                </div>
+                <Chip
+                clickable={this.props.isClickable}
+                    avatar={<Avatar src={this.props.user.avatarURL} />}
+                    label={this.props.user.name}
+                />
             )
-        } else {
-            return (
-                    <div className='tweet'>
-                        <img
-                            src="../placeholder.png"
-                            alt = "Placeholder Image"
-                            className='avatar'
-                        />
-                    </div>
-                    )
-                }        
-            }
         }
-        
-        
-export default connect()(User)
+    }
+}
+
+
+export default User

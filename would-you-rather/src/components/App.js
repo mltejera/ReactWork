@@ -10,6 +10,12 @@ import Leaderboard from './Leaderboard'
 import UserSelectorList from './UserSelectorList'
 import User from './User'
 
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())

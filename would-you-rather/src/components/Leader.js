@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography';
+
 class Leader extends Component {
     render() {
 
@@ -17,28 +20,25 @@ class Leader extends Component {
         const answerCount = Object.keys(user.answers).length 
 
         return (
-            <div className='tweet'>
-                <div >
+            <Paper className='leader'>
+                <div>
                     <img
                         src={user.avatarURL}
                         alt={`Avatar of ${user.name}`}
                         className='avatar'
                     />
+
+                    <Typography variant="title">{user.name}</Typography>
                 </div>
 
-                <div className='tweet-info'>
                     <div>
-                        <span>{user.name}</span>
+                        <Typography>
+                            Questions Answered: {answerCount}
+                        <br/>
+                            Questions Asked: {askCount}
+                        </Typography>
                     </div>
-                    <div className='tweet-icons'>
-                            <p>
-                                Questions Answered: {answerCount}
-                            <br/>
-                                Questions Asked: {askCount}
-                            </p>
-                    </div>
-                </div>
-            </div>
+            </Paper>
         )
     }
 }

@@ -12,6 +12,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
+import DoneIcon from '@material-ui/icons/Done';
 
 class QuestionAnswered extends Component {
 
@@ -41,13 +42,13 @@ class QuestionAnswered extends Component {
                                 <TableCell component="th" scope="row" variant="body">{question.optionOne.text}</TableCell>
                                 <TableCell numeric>{question.optionOne.votes.length}</TableCell>
                                 <TableCell numeric>{optionOnePercent}</TableCell>
-                                <TableCell numeric> {userAnswer === "optionOne" ? <img className="checkMark" src="./green-check-mark-md.png" /> : null}</TableCell>
+                                <TableCell numeric> {userAnswer === "optionOne" ? <DoneIcon /> : null}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell component="th" scope="row">{question.optionTwo.text}</TableCell>
                                 <TableCell numeric>{question.optionTwo.votes.length}</TableCell>
                                 <TableCell numeric>{optionTwoPercent}</TableCell>
-                                <TableCell numeric> {userAnswer === "optionTwo" ? <img className="checkMark" src="./green-check-mark-md.png" /> : null}</TableCell>
+                                <TableCell numeric> {userAnswer === "optionTwo" ? <DoneIcon /> : null}</TableCell>
                             </TableRow>
                     </TableBody>
                     </Table>

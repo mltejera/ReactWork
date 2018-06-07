@@ -47,8 +47,7 @@ class QuestionUnAnswered extends Component {
         const { question, author, } = this.props
         
         return (
-            <Paper>
-                <div className='questionCard'>
+            <Paper className='questionCard centerBox'>
                     <Typography variant="title" classname="center">Would you rather?</Typography>                        
                     
                     <Typography variant="subheading">{question.optionOne.text}</Typography>
@@ -62,8 +61,6 @@ class QuestionUnAnswered extends Component {
                      Asked By:
                     </Typography>
                     <User user={author}/>
-
-                </div>
             </Paper>
         )
     }

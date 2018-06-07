@@ -117,3 +117,15 @@ li {
   text-align: center;
   margin: 0 auto;
 }
+
+.leader {
+  width: 420px;
+  display: flex;
+  justify-content: space-evenly; 
+  padding: 12px 12px 12px 12px;
+  align-items: center;
+}
+
+.textAlignCenter {
+  margin: 0 auto;
+}

@@ -12,4 +12,4 @@ Finally, start the http server: npm start
 
 Node will then launch the app in your default browser.
 
-Happy Reading!
+Happy Voting!

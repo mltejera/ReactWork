@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import UserSelector from './UserSelector'
 
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography';
+
 class UserSelectorList extends Component {
     render() {
 
         const userIds = this.props.userIds
 
         return (
-            <div>
-                <h3 className='center'>Select a user</h3>
+            <div className="centerBox">
+            <Paper className="questionCard centerBox">
+                <Typography variant="title" className='center'>Select a user</Typography>
+
                 <ul className='dashboard-list'>
                     {userIds.map((id) => (
                         <li key={id} >
@@ -17,7 +22,8 @@ class UserSelectorList extends Component {
                         </li>
                     ))}
                 </ul>
-            </div> 
+            </Paper> 
+            </div>
         )
     }
 }

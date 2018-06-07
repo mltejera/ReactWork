@@ -11,6 +11,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Typography from '@material-ui/core/Typography';
 
 class QuestionAnswered extends Component {
 
@@ -24,7 +25,8 @@ class QuestionAnswered extends Component {
 
         return (
             <Paper className='answeredQuestionPaper'>
-                    {formatDate(question.timestamp)}
+                    <Typography variant="title" className='center'>Asked at: {formatDate(question.timestamp)}</Typography>
+                        
                     <Table >
                         <TableHead>
                             <TableRow>

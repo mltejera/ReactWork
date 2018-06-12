@@ -4,9 +4,11 @@ import Question from './Question'
 import Grid from '@material-ui/core/Grid'
 
 class QuestionList extends Component {
-    render() {
 
-        const { users, authedUser, questionIds, questions } = this.props
+    constructor(props) {
+        super(props)
+
+        const { users, authedUser, questionIds, questions } = props
 
         var listOfAllQuestionIds = Object.keys(questions)
 
@@ -21,12 +23,19 @@ class QuestionList extends Component {
             }
         }
 
+        this.state = ({
+            questionsIdsUserHasAnswered: questionsIdsUserHasAnswered,
+            questionIdsUserHasNOTAnswered: questionIdsUserHasNOTAnswered,
+        })
+      }
+
+    render() {
         if (this.props.showAnswered) {
             return (
                 <Grid container spacing={16}>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={16}>
-                            {questionsIdsUserHasAnswered.map((id) => (
+                            {this.state.questionsIdsUserHasAnswered.map((id) => (
                                 <Grid item key={id}>
                                     <Question id={id} />
                                 </Grid>
@@ -40,7 +49,7 @@ class QuestionList extends Component {
                 <Grid container spacing={16}>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={16}>
-                            {questionIdsUserHasNOTAnswered.map((id) => (
+                            {this.state.questionIdsUserHasNOTAnswered.map((id) => (
                                 <Grid item key={id}>
                                     <Question id={id} />
                                 </Grid>

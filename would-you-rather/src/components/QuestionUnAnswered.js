@@ -59,7 +59,7 @@ class QuestionUnAnswered extends Component {
     }
 }
 
-QuestionUnAnswered.PropTypes = {
+QuestionUnAnswered.propTypes = {
     id: PropTypes.string.isRequired
 }
 

@@ -13,31 +13,23 @@ import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography';
 
+var votingEnums = {optionOne:"optionOne", optionTwo:"optionTwo"}
+Object.freeze(votingEnums)
+
 class QuestionUnAnswered extends Component {
-    handleOptionOneVote = (e) => {
+
+    handleVote = (option, e) => {
         e.preventDefault()
         const { dispatch, question, authedUser, author } = this.props
+
+        console.log(option)
            
         dispatch(handleQuestionVote({
             authedUser: authedUser,
             qid: question.id,
-            answer: "optionOne",
+            answer: option.toString()
         }))
         
-        this.navToQuestion()
-      }
-
-      handleOptionTwoVote = (e) => {
-        e.preventDefault()
-
-        const { dispatch, question, authedUser } = this.props
-    
-        dispatch(handleQuestionVote({
-            authedUser: authedUser,
-            qid: question.id,
-            answer: "optionTwo",
-        }))
-
         this.navToQuestion()
       }
 
@@ -53,15 +45,15 @@ class QuestionUnAnswered extends Component {
                     <Typography variant="title" className="center">Would you rather?</Typography>                        
                     
                     <Typography variant="subheading">{question.optionOne.text}</Typography>
-                        <Button variant="contained" onClick={this.handleOptionOneVote}>Vote</Button>
+                        <Button variant="contained" onClick={(e) => this.handleVote(votingEnums.optionOne, e)}>Vote</Button>
 
                     <Typography variant="subheading">{question.optionTwo.text}</Typography>
-                        <Button variant="contained" onClick={this.handleOptionTwoVote}>Vote</Button>
+                        <Button variant="contained" onClick={(e) => this.handleVote(votingEnums.optionTwo, e)}>Vote</Button>
                     
                     <Typography variant="body2">
                      Asked By:
                     </Typography>
-                    <User user={author}/>
+                    <User user={author} isClickable={false}/>
             </Paper>
         )
     }

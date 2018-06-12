@@ -39,7 +39,7 @@ class Nav extends Component {
         <BottomNavigationAction label="Answered" value="answered" icon={<DoneIcon />} />
         <BottomNavigationAction label="New question" value="add" icon={<AddNewIcon />} />
         <BottomNavigationAction label="Leaders" value="leaderboard" icon={<ListIcon/>} />
-        <BottomNavigationAction  value="changeUser" icon={<User user={this.props.user} />} />
+        <BottomNavigationAction  value="changeUser" icon={<User user={this.props.user}  isClickable={true} />} />
       </BottomNavigation>
     </div>
     )

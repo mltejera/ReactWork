@@ -25,8 +25,6 @@ class Leaderboard extends Component {
     }
 }
 
-
-
 function mapStateToProps({ users }) {
     return {
         userIds: Object.keys(users)

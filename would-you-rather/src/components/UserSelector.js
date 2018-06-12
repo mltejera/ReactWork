@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 import { setAuthedUser } from '../actions/authedUser'
 import { Link, withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
@@ -31,10 +32,12 @@ class UserSelector extends Component {
     }
 }
 
-function mapStateToProps({users, authedUser}, props ) {
+UserSelector.propTypes = {
+    id: PropTypes.string.isRequired
+}
 
+function mapStateToProps({users, authedUser}, props) {
     const user = users[props.id]
-
        return {
          user
     }

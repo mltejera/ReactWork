@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { PropTypes } from 'prop-types'
 
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography';
@@ -41,6 +42,11 @@ class Leader extends Component {
             </Paper>
         )
     }
+}
+
+
+Leader.PropTypes = {
+    id: PropTypes.string.isRequired
 }
 
 function mapStateToProps({ users, questions }, { id }) {

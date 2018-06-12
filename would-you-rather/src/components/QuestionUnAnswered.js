@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+
 import { formatQuestion, formatDate } from '../utils/helpers'
 import { handleAnswerQuestion } from '../actions/questions'
 import { handleUpdateUserAnswer} from '../actions/users'
@@ -48,7 +50,7 @@ class QuestionUnAnswered extends Component {
         
         return (
             <Paper className='questionCard centerBox'>
-                    <Typography variant="title" classname="center">Would you rather?</Typography>                        
+                    <Typography variant="title" className="center">Would you rather?</Typography>                        
                     
                     <Typography variant="subheading">{question.optionOne.text}</Typography>
                         <Button variant="contained" onClick={this.handleOptionOneVote}>Vote</Button>
@@ -56,7 +58,6 @@ class QuestionUnAnswered extends Component {
                     <Typography variant="subheading">{question.optionTwo.text}</Typography>
                         <Button variant="contained" onClick={this.handleOptionTwoVote}>Vote</Button>
                     
-
                     <Typography variant="body2">
                      Asked By:
                     </Typography>
@@ -64,6 +65,10 @@ class QuestionUnAnswered extends Component {
             </Paper>
         )
     }
+}
+
+QuestionUnAnswered.PropTypes = {
+    id: PropTypes.string.isRequired
 }
 
 function mapStateToProps({authedUser, users, questions}, { id }){

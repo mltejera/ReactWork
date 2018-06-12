@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import Question from './Question'
 
 class QuestionPage extends Component {
@@ -22,6 +23,10 @@ class QuestionPage extends Component {
 
 
     }
+}
+
+QuestionPage.PropTypes = {
+    id: PropTypes.string.isRequired
 }
 
 function mapStateToProps({questions}, props){

@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 class UserSelectorList extends Component {
     render() {
 
-        const userIds = this.props.userIds
+        const { userIds } = this.props
 
         return (
             <div className="centerBox">
@@ -28,12 +28,9 @@ class UserSelectorList extends Component {
     }
 }
 
-function mapStateToProps({users}) {
-
-    return {
+const mapStateToProps = ({users}) => ({
         userIds: Object.keys(users)
-    }
-}
+})
 
 
 export default connect(mapStateToProps)(UserSelectorList)

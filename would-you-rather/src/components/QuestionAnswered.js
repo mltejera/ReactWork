@@ -4,6 +4,7 @@ import { isInArray, formatDate } from '../utils/helpers'
 import { handleAnswerQuestion } from '../actions/questions'
 import { handleUpdateUserAnswer } from '../actions/users'
 import { handleQuestionVote } from '../actions/shared'
+import { PropTypes } from 'prop-types'
 
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table';
@@ -55,6 +56,11 @@ class QuestionAnswered extends Component {
             </Paper>
         )
     }
+}
+
+
+QuestionAnswered.PropTypes = {
+    id: PropTypes.string.isRequired
 }
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {

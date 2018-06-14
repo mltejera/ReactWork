@@ -5,10 +5,33 @@ import Grid from '@material-ui/core/Grid'
 
 class QuestionList extends Component {
 
-    constructor(props) {
-        super(props)
+    // constructor(props) {
+    //     super(props)
 
-        const { users, authedUser, questionIds, questions } = props
+    //     const { users, authedUser, questionIds, questions } = props
+
+    //     var listOfAllQuestionIds = Object.keys(questions)
+
+    //     var questionsIdsUserHasAnswered = Object.keys(users[authedUser.id].answers)
+    //     var questionIdsUserHasNOTAnswered = [];
+
+    //     for (var i = 0; i < listOfAllQuestionIds.length; i++) {
+    //         var questionId = listOfAllQuestionIds[i];
+
+    //         if (!questionsIdsUserHasAnswered.includes(questionId)) {
+    //             questionIdsUserHasNOTAnswered.push(questionId)
+    //         }
+    //     }
+
+    //     this.state = ({
+    //         questionsIdsUserHasAnswered: questionsIdsUserHasAnswered,
+    //         questionIdsUserHasNOTAnswered: questionIdsUserHasNOTAnswered,
+    //     })
+    //   }
+
+    render() {
+
+        const { users, authedUser, questionIds, questions } = this.props
 
         var listOfAllQuestionIds = Object.keys(questions)
 
@@ -23,19 +46,12 @@ class QuestionList extends Component {
             }
         }
 
-        this.state = ({
-            questionsIdsUserHasAnswered: questionsIdsUserHasAnswered,
-            questionIdsUserHasNOTAnswered: questionIdsUserHasNOTAnswered,
-        })
-      }
-
-    render() {
         if (this.props.showAnswered) {
             return (
                 <Grid container spacing={16}>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={16}>
-                            {this.state.questionsIdsUserHasAnswered.map((id) => (
+                            {questionsIdsUserHasAnswered.map((id) => (
                                 <Grid item key={id}>
                                     <Question id={id} />
                                 </Grid>
@@ -49,7 +65,7 @@ class QuestionList extends Component {
                 <Grid container spacing={16}>
                     <Grid item xs={12}>
                         <Grid container justify="center" spacing={16}>
-                            {this.state.questionIdsUserHasNOTAnswered.map((id) => (
+                            {questionIdsUserHasNOTAnswered.map((id) => (
                                 <Grid item key={id}>
                                     <Question id={id} />
                                 </Grid>
@@ -64,6 +80,7 @@ class QuestionList extends Component {
 
 function mapStateToProps({ questions, users, authedUser }) {
 
+    console.log(questions)
     return {
         users,
         authedUser,

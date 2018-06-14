@@ -12,10 +12,10 @@ class QuestionPage extends Component {
         var questionId = this.props.questionId.id
 
         if(questionIds.includes(questionId)){
-            return (    
-                <div>
-                    <Question id={questionId}/>
-                </div>
+            return (
+            <div className='centerBox'>
+                <Question id={questionId} />
+            </div>
             )
         } else {
             return <div>404, question not found</div>

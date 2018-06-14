@@ -27,7 +27,7 @@ class QuestionAnswered extends Component {
         var optionTwoPercent = convertToPercentageString(question.optionTwo.votes.length, totalVotes)
 
         return (
-            <Paper className='answeredQuestionPaper'>
+            <Paper className='answeredQuestionPaper centerBox'>
                     <Typography variant="title" className='center'>Asked at: {formatDate(question.timestamp)}</Typography>
                         
                     <Table >

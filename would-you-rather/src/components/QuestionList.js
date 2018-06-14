@@ -4,31 +4,6 @@ import Question from './Question'
 import Grid from '@material-ui/core/Grid'
 
 class QuestionList extends Component {
-
-    // constructor(props) {
-    //     super(props)
-
-    //     const { users, authedUser, questionIds, questions } = props
-
-    //     var listOfAllQuestionIds = Object.keys(questions)
-
-    //     var questionsIdsUserHasAnswered = Object.keys(users[authedUser.id].answers)
-    //     var questionIdsUserHasNOTAnswered = [];
-
-    //     for (var i = 0; i < listOfAllQuestionIds.length; i++) {
-    //         var questionId = listOfAllQuestionIds[i];
-
-    //         if (!questionsIdsUserHasAnswered.includes(questionId)) {
-    //             questionIdsUserHasNOTAnswered.push(questionId)
-    //         }
-    //     }
-
-    //     this.state = ({
-    //         questionsIdsUserHasAnswered: questionsIdsUserHasAnswered,
-    //         questionIdsUserHasNOTAnswered: questionIdsUserHasNOTAnswered,
-    //     })
-    //   }
-
     render() {
 
         const { users, authedUser, questionIds, questions } = this.props
@@ -80,7 +55,6 @@ class QuestionList extends Component {
 
 function mapStateToProps({ questions, users, authedUser }) {
 
-    console.log(questions)
     return {
         users,
         authedUser,

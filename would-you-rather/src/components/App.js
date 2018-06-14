@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 import { handleInitialData } from '../actions/shared'
 import QuestionList from './QuestionList'
 import Nav from './Nav'
@@ -25,7 +26,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <div className='container'>
+           <div className='container'>
             {this.props.isAuthed
               ?
               <div>

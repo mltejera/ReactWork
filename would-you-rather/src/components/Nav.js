@@ -18,19 +18,14 @@ class Nav extends Component {
   };
 
   handleChange = (event, value) => {
-
-    console.log(value.toString())
-
     this.setState({ value });
-
-      console.log(this.props.history)
-      this.props.history.push(`/` + value.toString())
+    this.props.history.push(`/` + value.toString())
   };
 
   render() {
-
     const { classes, user } = this.props;
     const { value } = this.state;
+
 
     return (
     <div>
@@ -39,7 +34,7 @@ class Nav extends Component {
         <BottomNavigationAction label="Answered" value="answered" icon={<DoneIcon />} />
         <BottomNavigationAction label="New question" value="add" icon={<AddNewIcon />} />
         <BottomNavigationAction label="Leaders" value="leaderboard" icon={<ListIcon/>} />
-        <BottomNavigationAction  value="changeUser" icon={<User user={this.props.user}  isClickable={true} />} />
+        <BottomNavigationAction value="changeUser" icon={<User user={this.props.user}  isClickable={true} />} />
       </BottomNavigation>
     </div>
     )

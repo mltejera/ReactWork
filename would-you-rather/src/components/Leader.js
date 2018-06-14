@@ -45,7 +45,7 @@ class Leader extends Component {
 }
 
 
-Leader.PropTypes = {
+Leader.propTypes = {
     id: PropTypes.string.isRequired
 }
 

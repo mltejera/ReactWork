@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { isInArray, formatDate } from '../utils/helpers'
+import { PropTypes } from 'prop-types'
+
+import { isInArray, formatDate, convertToPercentageString } from '../utils/helpers'
 import { handleAnswerQuestion } from '../actions/questions'
 import { handleUpdateUserAnswer } from '../actions/users'
 import { handleQuestionVote } from '../actions/shared'
-import { PropTypes } from 'prop-types'
 
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table';
@@ -59,7 +60,7 @@ class QuestionAnswered extends Component {
 }
 
 
-QuestionAnswered.PropTypes = {
+QuestionAnswered.propTypes = {
     id: PropTypes.string.isRequired
 }
 
@@ -77,15 +78,6 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
         question,
         userAnswer
     }
-}
-
-function convertToPercentageString(numerator, total) {
-
-    var decimal = (numerator / total) * 100
-    var rounded = Math.round(decimal)
-    var string = rounded.toString() + "%"
-
-    return string
 }
 
 export default connect(mapStateToProps)(QuestionAnswered)

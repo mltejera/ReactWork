@@ -25,10 +25,6 @@ class QuestionPage extends Component {
     }
 }
 
-QuestionPage.PropTypes = {
-    id: PropTypes.string.isRequired
-}
-
 function mapStateToProps({questions}, props){
 
     const questionId = props.match.params

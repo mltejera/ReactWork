@@ -21,8 +21,6 @@ class QuestionUnAnswered extends Component {
     handleVote = (option, e) => {
         e.preventDefault()
         const { dispatch, question, authedUser, author } = this.props
-
-        console.log(option)
            
         dispatch(handleQuestionVote({
             authedUser: authedUser,

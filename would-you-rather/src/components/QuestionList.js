@@ -59,12 +59,11 @@ class QuestionList extends Component {
                 </Grid>
             )
         }
-
-
     }
 }
 
 function mapStateToProps({ questions, users, authedUser }) {
+
     return {
         users,
         authedUser,

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import Leader from './Leader'
 
 import Paper from '@material-ui/core/Paper'

@@ -1,7 +1,7 @@
 let users = {
     sarahedo: {
       id: 'sarahedo',
-      name: 'Sarah Edo',
+      name: 'Batman',
       avatarURL: '../batman.png',
       answers: {
         "8xf0y6ziyjabvozdd253nd": 'optionOne',
@@ -13,7 +13,7 @@ let users = {
     },
     tylermcginnis: {
       id: 'tylermcginnis',
-      name: 'Tyler McGinnis',
+      name: 'Robin',
       avatarURL: './robin.png',
       answers: {
         "vthrdm985a262al8qx3do": 'optionOne',
@@ -23,7 +23,7 @@ let users = {
     },
     johndoe: {
       id: 'johndoe',
-      name: 'John Doe',
+      name: 'Alfred',
       avatarURL: "../alfred.png",
       answers: {
         "xj352vofupe1dqz9emx13r": 'optionOne',
